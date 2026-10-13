@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>63 Drone Media | Aerial Photo &amp; Video, San Diego</title>
+<meta name="description" content="FAA Part 107 certified aerial photo and video in San Diego County with $1M+ liability coverage. Real estate, film, action sports and construction.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='12' fill='%23050505'/><path d='M10 22V10h12M42 10h12v12M10 42v12h12M54 42v12H42' fill='none' stroke='%232EE6D6' stroke-width='5'/><text x='32' y='41' font-family='Arial' font-weight='800' font-size='24' fill='%23EDEDED' text-anchor='middle'>63</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== Brand tokens ===== */
+  :root{
+    --night:#050505;      /* background: pre-dawn ocean */
+    --deck:#121212;       /* raised surfaces */
+    --line:#2A2A2A;       /* borders */
+    --mist:#EDEDED;       /* main text */
+    --haze:#9A9A9A;       /* secondary text */
+    --teal:#2EE6D6;       /* accent */
+    --teal-dim:rgba(46,230,214,.14);
+    --display:"Archivo","Arial Narrow",Arial,sans-serif;
+    --body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
+    color-scheme:dark;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *,*::before,*::after{box-sizing:inherit;margin:0}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+  body{background:var(--night);color:var(--mist);font:400 1.0625rem/1.6 var(--body);-webkit-font-smoothing:antialiased}
+  img,video{max-width:100%;display:block}
+  a{color:inherit}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:3px}
+  .wrap{width:min(1180px,100% - 2.5rem);margin-inline:auto}
+  h1,h2,h3{font-family:var(--display);font-stretch:118%;line-height:1.02;letter-spacing:-.01em}
+  h2{font-size:clamp(2rem,4.5vw,3.25rem);font-weight:750}
+  .lede{color:var(--haze);max-width:52ch;margin-top:1rem}
+  section{padding:clamp(4.5rem,10vw,8rem) 0}
+
+  /* ===== Header ===== */
+  header{position:fixed;inset:0 0 auto;z-index:10;padding-top:env(safe-area-inset-top,0px);
+    background:linear-gradient(var(--night),rgba(5,5,5,.0));transition:background .3s}
+  header.solid{background:rgba(5,5,5,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:.6rem;text-decoration:none;font-family:var(--display);font-weight:700;font-stretch:110%;font-size:1.1rem}
+  .logo .mark{flex:none}
+  nav{display:flex;gap:1.75rem;align-items:center}
+  nav a{text-decoration:none;color:var(--haze);font-weight:600;font-size:.95rem}
+  nav a:hover{color:var(--mist)}
+  .btn{display:inline-block;background:var(--teal);color:var(--night);font-weight:700;text-decoration:none;
+    padding:.8rem 1.4rem;border-radius:999px;border:0;font:700 1rem var(--body);cursor:pointer}
+  .btn:hover{filter:brightness(1.08)}
+  nav .btn{color:var(--night);padding:.55rem 1.1rem;font-size:.92rem}
+  @media(max-width:720px){nav a:not(.btn){display:none}}
+
+  /* ===== Hero: camera viewfinder ===== */
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(3rem,8vw,6rem);overflow:hidden;isolation:isolate}
+  .hero-media{position:absolute;inset:0;z-index:-2;
+    background:radial-gradient(120% 70% at 50% 110%,#0b2b2a 0%,transparent 60%),
+               linear-gradient(180deg,#050505 0%,#070707 55%,#0a1f1e 100%)}
+  .hero-media video{width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(5,5,5,.35),rgba(5,5,5,.85))}
+  .vf{position:absolute;inset:clamp(84px,12vh,110px) clamp(1rem,4vw,2.5rem) clamp(1rem,4vw,2.5rem);pointer-events:none}
+  .vf i{position:absolute;width:42px;height:42px;border:2px solid var(--teal);opacity:.85}
+  .vf i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
+  .vf i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
+  .vf i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
+  .vf i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
+  .vf .cross{position:absolute;left:50%;top:45%;width:28px;height:28px;transform:translate(-50%,-50%);opacity:.5}
+  .vf .cross::before,.vf .cross::after{content:"";position:absolute;background:var(--teal)}
+  .vf .cross::before{left:50%;top:0;bottom:0;width:1px}
+  .vf .cross::after{top:50%;left:0;right:0;height:1px}
+  .hud{position:absolute;top:14px;right:58px;display:flex;gap:1.5rem;font:600 .82rem var(--body);color:var(--teal);font-variant-numeric:tabular-nums}
+  .hud .rec::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:#ff4d4d;margin-right:.45rem;vertical-align:1px;animation:blink 1.4s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  @media(prefers-reduced-motion:reduce){.hud .rec::before{animation:none}html{scroll-behavior:auto}}
+  @media(max-width:560px){.hud{right:auto;left:58px;gap:1rem}.hud .alt{display:none}}
+  .hero h1{font-size:clamp(2.8rem,9vw,7.2rem);font-weight:800;font-stretch:125%;max-width:12ch}
+  .hero p{color:var(--mist);opacity:.85;max-width:44ch;margin:1.25rem 0 2rem;font-size:1.15rem}
+  .hero .ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
+  .ghost{color:var(--mist);font-weight:600;text-decoration:underline;text-underline-offset:5px;text-decoration-color:var(--teal)}
+
+  /* ===== Credentials strip ===== */
+  .creds{border-block:1px solid var(--line);background:var(--deck)}
+  .creds ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,1fr)}
+  .creds li{padding:1.6rem 1.25rem;display:flex;gap:.9rem;align-items:center}
+  .creds li+li{border-left:1px solid var(--line)}
+  .creds svg{flex:none;color:var(--teal)}
+  .creds strong{display:block;font-family:var(--display);font-stretch:110%;font-size:1.05rem}
+  .creds span{color:var(--haze);font-size:.93rem}
+  @media(max-width:760px){.creds ul{grid-template-columns:1fr}.creds li+li{border-left:0;border-top:1px solid var(--line)}}
+
+  /* ===== Services ===== */
+  .svc-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+  .svc-list{list-style:none;padding:0}
+  .svc-list li{display:grid;grid-template-columns:1fr auto;gap:.25rem 1rem;padding:1.5rem 0;border-top:1px solid var(--line)}
+  .svc-list li:last-child{border-bottom:1px solid var(--line)}
+  .svc-list h3{font-size:1.5rem;font-weight:700}
+  .svc-list p{grid-column:1/-1;color:var(--haze);max-width:56ch}
+  .svc-list a{align-self:center;color:var(--teal);font-weight:600;text-decoration:none;font-size:.95rem}
+  .svc-list a:hover{text-decoration:underline}
+  @media(max-width:860px){.svc-grid{grid-template-columns:1fr}}
+
+  /* ===== Work / footage slots ===== */
+  .work-head{display:flex;justify-content:space-between;align-items:end;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+  .tabs{display:flex;flex-wrap:wrap;gap:.5rem}
+  .tabs button{background:none;border:1px solid var(--line);color:var(--haze);padding:.5rem 1rem;border-radius:999px;font:600 .92rem var(--body);cursor:pointer}
+  .tabs button[aria-pressed="true"]{border-color:var(--teal);color:var(--teal);background:var(--teal-dim)}
+  .reel{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+  .clip{grid-column:span 4;position:relative;aspect-ratio:16/9;background:var(--deck);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .clip.wide{grid-column:span 8;grid-row:span 2;aspect-ratio:auto;min-height:100%}
+  .clip video,.clip img,.clip iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+  .clip figcaption{position:absolute;left:0;right:0;bottom:0;padding:.9rem 1rem;background:linear-gradient(transparent,rgba(5,5,5,.9));font-weight:600;font-size:.95rem}
+  .clip figcaption small{display:block;color:var(--haze);font-weight:400}
+  .clip.empty{display:grid;place-items:center;text-align:center;color:var(--haze);font-size:.9rem}
+  .clip.empty::before,.clip.empty::after{content:"";position:absolute;width:18px;height:18px;border:1.5px solid var(--teal);opacity:.6}
+  .clip.empty::before{top:12px;left:12px;border-right:0;border-bottom:0}
+  .clip.empty::after{bottom:12px;right:12px;border-left:0;border-top:0}
+  .clip[hidden]{display:none}
+  @media(max-width:860px){.clip,.clip.wide{grid-column:span 12;grid-row:auto;aspect-ratio:16/9}}
+
+  /* ===== Contact ===== */
+  .contact{background:var(--deck);border-top:1px solid var(--line)}
+  .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:clamp(2rem,6vw,5rem)}
+  .direct{margin-top:2rem;display:grid;gap:.4rem}
+  .direct a{color:var(--teal);font-weight:600;text-decoration:none;font-size:1.1rem}
+  form{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+  .full{grid-column:1/-1}
+  label{display:grid;gap:.4rem;font-weight:600;font-size:.92rem}
+  input,select,textarea{width:100%;background:var(--night);border:1px solid var(--line);color:var(--mist);border-radius:6px;padding:.8rem .9rem;font:400 1rem var(--body)}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--teal);box-shadow:0 0 0 3px var(--teal-dim)}
+  textarea{min-height:140px;resize:vertical}
+  .hp{position:absolute;left:-9999px}
+  .sent{grid-column:1/-1;padding:1rem;border:1px solid var(--teal);border-radius:6px;background:var(--teal-dim);color:var(--mist)}
+  @media(max-width:860px){.contact-grid{grid-template-columns:1fr}}
+  @media(max-width:560px){form{grid-template-columns:1fr}}
+
+  footer{padding:2rem 0;color:var(--haze);font-size:.9rem;border-top:1px solid var(--line)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+</style>
+</head>
+<body>
+
+<header id="top">
+  <div class="wrap bar">
+    <a class="logo" href="#top" aria-label="63 Drone Media home"><svg class="mark" width="44" height="32" viewBox="0 0 220 160" aria-hidden="true"><path d="M4 40V4h36 M180 4h36v36 M4 120v36h36 M216 120v36h-36" fill="none" stroke="#2EE6D6" stroke-width="10"/><text x="110" y="112" text-anchor="middle" font-family="Archivo, Arial Narrow, sans-serif" font-weight="800" font-size="96" fill="#EDEDED" style="font-stretch:118%">63</text></svg>63 Drone Media</a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#services">Services</a>
+      <a class="btn" href="#contact">Book a flight</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-media">
+      <!-- ADD YOUR HERO REEL: upload a short muted clip (e.g. hero.mp4) next to this file, then remove the comment tags below.
+      <video src="hero.mp4" autoplay muted loop playsinline poster="hero.jpg"></video>
+      -->
+    </div>
+    <div class="vf" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><span class="cross"></span>
+      <div class="hud"><span class="rec">REC</span><span class="alt">ALT 400 FT</span><span>4K 60</span></div>
+    </div>
+    <div class="wrap">
+      <h1>San Diego from above.</h1>
+      <p>Cinematic aerial photo and video for real estate, film, action sports and construction. Certified. Insured. Cleared to fly.</p>
+      <div class="ctas">
+        <a class="btn" href="#contact">Get a quote</a>
+        <a class="ghost" href="#work">See the footage</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CREDENTIALS ===== -->
+  <div class="creds">
+    <ul class="wrap">
+      <li><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 4.5-3.4 8.3-8 9-4.6-.7-8-4.5-8-9V6l8-3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></svg>
+        <div><strong>FAA Part 107 certified</strong><span>Commercial remote pilot</span></div></li>
+      <li><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        <div><strong>$1M+ liability coverage</strong><span>Certificates of insurance on request</span></div></li>
+      <li><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0119 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        <div><strong>San Diego County</strong><span>Airspace checks handled for you</span></div></li>
+    </ul>
+  </div>
+
+  <!-- ===== WORK ===== -->
+  <section id="work">
+    <div class="wrap">
+      <div class="work-head">
+        <div>
+          <h2>Recent flights</h2>
+          <p class="lede">A look at the shots we deliver.</p>
+        </div>
+        <div class="tabs" role="group" aria-label="Filter footage">
+          <button aria-pressed="true" data-f="all">All</button>
+          <button aria-pressed="false" data-f="realestate">Real estate</button>
+          <button aria-pressed="false" data-f="cinema">Cinema</button>
+          <button aria-pressed="false" data-f="sports">Action sports</button>
+          <button aria-pressed="false" data-f="construction">Construction</button>
+        </div>
+      </div>
+
+      <!--
+        HOW TO ADD FOOTAGE
+        Replace any "empty" slot with one of these. Keep data-cat as: realestate, cinema, sports, or construction.
+
+        Video file:
+        <figure class="clip" data-cat="realestate">
+          <video src="footage/la-jolla-home.mp4" muted loop playsinline autoplay poster="footage/la-jolla-home.jpg"></video>
+          <figcaption>La Jolla listing<small>Real estate</small></figcaption>
+        </figure>
+
+        Photo:
+        <figure class="clip" data-cat="construction">
+          <img src="footage/site-progress.jpg" alt="Construction site from above" loading="lazy">
+          <figcaption>Site progress<small>Construction</small></figcaption>
+        </figure>
+
+        YouTube / Vimeo:
+        <figure class="clip" data-cat="cinema">
+          <iframe src="https://www.youtube.com/embed/VIDEO_ID" allowfullscreen loading="lazy" title="Coastal reel"></iframe>
+        </figure>
+
+        Add class="clip wide" to make one clip the large feature tile.
+      -->
+      <div class="reel">
+        <figure class="clip wide empty" data-cat="cinema"><span>Featured reel<br>coming soon</span></figure>
+        <figure class="clip empty" data-cat="realestate"><span>Real estate</span></figure>
+        <figure class="clip empty" data-cat="sports"><span>Action sports</span></figure>
+        <figure class="clip empty" data-cat="construction"><span>Construction</span></figure>
+        <figure class="clip empty" data-cat="realestate"><span>Real estate</span></figure>
+        <figure class="clip empty" data-cat="cinema"><span>Cinema</span></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section id="services" style="padding-top:0">
+    <div class="wrap svc-grid">
+      <div>
+        <h2>What we fly</h2>
+        <p class="lede">Every shoot includes flight planning, airspace authorization where needed, and edited, delivery-ready files.</p>
+      </div>
+      <ul class="svc-list">
+        <li><h3>Real estate</h3><a href="#contact" data-svc="Real estate">Quote</a>
+          <p>Listing photos and video that show the lot, the neighborhood and the view buyers are paying for.</p></li>
+        <li><h3>Cinema</h3><a href="#contact" data-svc="Cinema">Quote</a>
+          <p>Smooth establishing shots and reveals for film, commercials and brand content.</p></li>
+        <li><h3>Action sports</h3><a href="#contact" data-svc="Action sports">Quote</a>
+          <p>Surf, skate, moto and events tracked from above, in 4K at high frame rates.</p></li>
+        <li><h3>Construction</h3><a href="#contact" data-svc="Construction">Quote</a>
+          <p>Progress documentation and site overviews on a schedule that fits your build.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Book a flight</h2>
+        <p class="lede">Tell us the location, date and what you need. You'll get a quote within one business day.</p>
+        <div class="direct">
+          <a href="mailto:hello@63dronemedia.com">hello@63dronemedia.com</a>
+        </div>
+      </div>
+
+      <form action="https://formsubmit.co/hello@63dronemedia.com" method="POST">
+        <input type="hidden" name="_subject" value="New quote request: 63 Drone Media">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://63dronemedia.com/?sent=1#contact">
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <p class="sent" id="sent" hidden>Request sent. You'll hear back within one business day.</p>
+
+        <label>Name<input name="name" required autocomplete="name"></label>
+        <label>Email<input type="email" name="email" required autocomplete="email"></label>
+        <label>Phone<input type="tel" name="phone" autocomplete="tel"></label>
+        <label>Service
+          <select name="service" id="service">
+            <option>Real estate</option><option>Cinema</option><option>Action sports</option><option>Construction</option><option>Something else</option>
+          </select>
+        </label>
+        <label>Shoot location<input name="location" placeholder="City or address"></label>
+        <label>Preferred date<input type="date" name="date"></label>
+        <label class="full">Project details<textarea name="message" required placeholder="What should the footage show, and where will it be used?"></textarea></label>
+        <div class="full"><button class="btn" type="submit">Send request</button></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr">2026</span> 63 Drone Media. San Diego, CA.</span>
+    <span>FAA Part 107 certified, $1M+ liability coverage</span>
+  </div>
+</footer>
+
+<script>
+  // Solid header after scrolling
+  const hdr=document.querySelector('header');
+  const onScroll=()=>hdr.classList.toggle('solid',scrollY>40);
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  // Footage filter
+  const tabs=document.querySelectorAll('.tabs button');
+  tabs.forEach(b=>b.addEventListener('click',()=>{
+    tabs.forEach(t=>t.setAttribute('aria-pressed',t===b));
+    const f=b.dataset.f;
+    document.querySelectorAll('.clip').forEach(c=>c.hidden=!(f==='all'||c.dataset.cat===f));
+  }));
+
+  // "Quote" links preselect the service
+  document.querySelectorAll('[data-svc]').forEach(a=>a.addEventListener('click',()=>{
+    document.getElementById('service').value=a.dataset.svc;
+  }));
+
+  // Confirmation after FormSubmit redirects back
+  if(new URLSearchParams(location.search).get('sent'))document.getElementById('sent').hidden=false;
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
