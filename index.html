@@ -61,23 +61,24 @@
   @media(max-width:720px){nav a:not(.btn){display:none}}
 
   /* ===== Hero: camera viewfinder ===== */
-  .hero{position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
-  .hero-media{position:absolute;inset:0;z-index:-2;
+  /* The video sits inside the viewfinder: --vf-top clears the header, --vf-gap is how far the corners sit outside the picture */
+  .hero{--vf-top:calc(84px + env(safe-area-inset-top,0px));--vf-side:clamp(1.25rem,4vw,3rem);--vf-gap:10px;
+    position:relative;min-height:100svh;overflow:hidden;isolation:isolate;
     background:radial-gradient(120% 70% at 50% 110%,#0b2b2a 0%,transparent 60%),
                linear-gradient(180deg,#050505 0%,#070707 55%,#0a1f1e 100%)}
+  .hero-media{position:absolute;inset:var(--vf-top) var(--vf-side) var(--vf-side);z-index:-1;border-radius:6px;overflow:hidden;background:#0a1f1e}
   .hero-media video{width:100%;height:100%;object-fit:cover;filter:saturate(1.35) contrast(1.12) brightness(1.05)}
-  .vf{position:absolute;inset:clamp(84px,12vh,110px) clamp(1rem,4vw,2.5rem) clamp(1rem,4vw,2.5rem);pointer-events:none}
+  .vf{position:absolute;inset:calc(var(--vf-top) - var(--vf-gap)) calc(var(--vf-side) - var(--vf-gap)) calc(var(--vf-side) - var(--vf-gap));pointer-events:none}
   .vf i{position:absolute;width:42px;height:42px;border:2px solid var(--teal);opacity:.85}
   .vf i:nth-child(1){top:0;left:0;border-right:0;border-bottom:0}
   .vf i:nth-child(2){top:0;right:0;border-left:0;border-bottom:0}
   .vf i:nth-child(3){bottom:0;left:0;border-right:0;border-top:0}
   .vf i:nth-child(4){bottom:0;right:0;border-left:0;border-top:0}
-  .vf .cross{position:absolute;left:50%;top:45%;width:28px;height:28px;transform:translate(-50%,-50%);opacity:.5}
+  .vf .cross{position:absolute;left:50%;top:50%;width:28px;height:28px;transform:translate(-50%,-50%);opacity:.5}
   .vf .cross::before,.vf .cross::after{content:"";position:absolute;background:var(--teal)}
   .vf .cross::before{left:50%;top:0;bottom:0;width:1px}
   .vf .cross::after{top:50%;left:0;right:0;height:1px}
   @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  @media(max-height:560px){.vf{display:none}}  /* landscape phones: no room for the viewfinder overlay */
   .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
   /* ===== Credentials strip ===== */
