@@ -59,7 +59,7 @@
   @media(max-width:720px){nav a:not(.btn){display:none}}
 
   /* ===== Hero: camera viewfinder ===== */
-  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:0 0 clamp(3rem,8vw,6rem);overflow:hidden;isolation:isolate}
+  .hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;padding:calc(96px + env(safe-area-inset-top,0px)) 0 clamp(3rem,8vw,6rem);overflow:hidden;isolation:isolate}
   .hero-media{position:absolute;inset:0;z-index:-2;
     background:radial-gradient(120% 70% at 50% 110%,#0b2b2a 0%,transparent 60%),
                linear-gradient(180deg,#050505 0%,#070707 55%,#0a1f1e 100%)}
@@ -80,6 +80,7 @@
   @keyframes blink{50%{opacity:0}}
   @media(prefers-reduced-motion:reduce){.hud .rec::before{animation:none}html{scroll-behavior:auto}}
   @media(max-width:560px){.hud{right:auto;left:58px;gap:1rem}.hud .alt{display:none}}
+  @media(max-height:560px){.vf{display:none}}  /* landscape phones: no room for the viewfinder overlay */
   .hero h1{font-size:clamp(2.8rem,9vw,7.2rem);font-weight:800;font-stretch:125%;max-width:12ch}
   .hero p{color:var(--mist);opacity:.85;max-width:44ch;margin:1.25rem 0 2rem;font-size:1.15rem}
   .hero .ctas{display:flex;flex-wrap:wrap;gap:1rem;align-items:center}
