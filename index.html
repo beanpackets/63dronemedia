@@ -161,9 +161,8 @@
   <!-- ===== HERO ===== -->
   <section class="hero">
     <div class="hero-media">
-      <!-- ADD YOUR HERO REEL: upload a short muted clip (e.g. hero.mp4) next to this file, then remove the comment tags below.
-      <video src="hero.mp4" autoplay muted loop playsinline poster="hero.jpg"></video>
-      -->
+      <!-- HERO REEL: placeholder stock clip from Pexels. Replace footage/hero.mp4 with your own short muted clip. -->
+      <video src="footage/hero.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
     </div>
     <div class="vf" aria-hidden="true">
       <i></i><i></i><i></i><i></i><span class="cross"></span>
@@ -196,8 +195,8 @@
     <div class="wrap">
       <div class="work-head">
         <div>
-          <h2>Recent flights</h2>
-          <p class="lede">A look at the shots we deliver.</p>
+          <h2>Sample footage</h2>
+          <p class="lede">Representative aerial work. Our own reel is coming soon.</p>
         </div>
         <div class="tabs" role="group" aria-label="Filter footage">
           <button aria-pressed="true" data-f="all">All</button>
@@ -212,9 +211,9 @@
         HOW TO ADD FOOTAGE
         Replace any "empty" slot with one of these. Keep data-cat as: realestate, cinema, sports, or construction.
 
-        Video file:
+        Video file (data-src makes it load only when scrolled into view):
         <figure class="clip" data-cat="realestate">
-          <video src="footage/la-jolla-home.mp4" muted loop playsinline autoplay poster="footage/la-jolla-home.jpg"></video>
+          <video data-src="footage/la-jolla-home.mp4" muted loop playsinline preload="none"></video>
           <figcaption>La Jolla listing<small>Real estate</small></figcaption>
         </figure>
 
@@ -232,12 +231,31 @@
         Add class="clip wide" to make one clip the large feature tile.
       -->
       <div class="reel">
-        <figure class="clip wide empty" data-cat="cinema"><span>Featured reel<br>coming soon</span></figure>
-        <figure class="clip empty" data-cat="realestate"><span>Real estate</span></figure>
-        <figure class="clip empty" data-cat="sports"><span>Action sports</span></figure>
-        <figure class="clip empty" data-cat="construction"><span>Construction</span></figure>
-        <figure class="clip empty" data-cat="realestate"><span>Real estate</span></figure>
-        <figure class="clip empty" data-cat="cinema"><span>Cinema</span></figure>
+        <!-- Placeholder stock clips from Pexels (pexels.com/license). Replace with your own footage. -->
+        <figure class="clip wide" data-cat="cinema">
+          <video data-src="footage/crystal-pier.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Coastline flyover<small>Cinema</small></figcaption>
+        </figure>
+        <figure class="clip" data-cat="realestate">
+          <video data-src="footage/pool-home.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Home and pool, overhead<small>Real estate</small></figcaption>
+        </figure>
+        <figure class="clip" data-cat="sports">
+          <video data-src="footage/surf.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Surf tracking<small>Action sports</small></figcaption>
+        </figure>
+        <figure class="clip" data-cat="construction">
+          <video data-src="footage/construction.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Steel frame progress<small>Construction</small></figcaption>
+        </figure>
+        <figure class="clip" data-cat="realestate">
+          <video data-src="footage/palm-street.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Neighborhood context<small>Real estate</small></figcaption>
+        </figure>
+        <figure class="clip" data-cat="cinema">
+          <video data-src="footage/bay-bridge.mp4" muted loop playsinline preload="none"></video>
+          <figcaption>Bridge at golden hour<small>Cinema</small></figcaption>
+        </figure>
       </div>
     </div>
   </section>
@@ -318,6 +336,18 @@
     const f=b.dataset.f;
     document.querySelectorAll('.clip').forEach(c=>c.hidden=!(f==='all'||c.dataset.cat===f));
   }));
+
+  // Footage clips load when scrolled near and pause off-screen; reduced motion shows a still frame
+  const still=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(still)document.querySelector('.hero video')?.pause();
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    const v=e.target;
+    if(e.isIntersecting){
+      if(!v.src){v.preload=still?'metadata':'auto';v.src=v.dataset.src}
+      if(!still)v.play().catch(()=>{});
+    }else v.pause();
+  }),{rootMargin:'200px'});
+  document.querySelectorAll('video[data-src]').forEach(v=>io.observe(v));
 
   // "Quote" links preselect the service
   document.querySelectorAll('[data-svc]').forEach(a=>a.addEventListener('click',()=>{
